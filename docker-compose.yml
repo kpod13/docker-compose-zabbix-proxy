@@ -1,0 +1,24 @@
+---
+version: '3.6'
+
+services:
+  zabbix-agent:
+    image: zabbix/zabbix-proxy-sqlite3:alpine-4.2-latest
+    ports:
+      - 0.0.0.0:${ZABBIX_AGENT_PORT:-10050}:10051
+    environment:
+      - ZBX_PROXYMODE=${ZBX_PROXYMODE:-0}
+      - ZBX_HOSTNAME=${ZBX_HOSTNAME:-zabbix-proxy}
+      - ZBX_SERVER_HOST
+      - ZBX_SERVER_PORT=${ZBX_SERVER_PORT:-10051}
+      - ZBX_ACTIVESERVERS
+      - ZBX_METADATA=${ZBX_METADATA:-zabbix-proxy}
+      - ZBX_TLSPSKIDENTITY=${ZBX_TLSPSKIDENTITY:-zabbix-proxy}
+      - ZBX_TLSPSKFILE=${ZBX_TLSPSKFILE:-zabbix-proxy.psk}
+      - ZBX_TLSCONNECT=${ZBX_TLSCONNECT:-psk}
+      - ZBX_TLSACCEPT=${ZBX_TLSACCEPT:-psk}
+      - ZBX_DEBUGLEVEL=${ZBX_DEBUGLEVEL:-1}
+    volumes:
+      - ./enc:/var/lib/zabbix/enc:ro
+    stop_grace_period: 1m
+    restart: always
