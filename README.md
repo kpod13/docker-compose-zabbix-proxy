@@ -1,4 +1,4 @@
-# docker-compose-zabbix
+# docker-compose-zabbix-proxy
 
 This is a docker-compose app with zabbix-proxy.
 
