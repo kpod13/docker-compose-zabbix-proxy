@@ -5,7 +5,7 @@ services:
   zabbix-proxy:
     image: zabbix/zabbix-proxy-sqlite3:alpine-4.2-latest
     ports:
-      - 0.0.0.0:${ZABBIX_AGENT_PORT:-10050}:10051
+      - 0.0.0.0:${ZABBIX_PROXY_PORT:-10051}:10051
     environment:
       - ZBX_PROXYMODE=${ZBX_PROXYMODE:-0}
       - ZBX_HOSTNAME=${ZBX_HOSTNAME:-zabbix-proxy}
