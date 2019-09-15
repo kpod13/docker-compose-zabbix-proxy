@@ -18,6 +18,8 @@ services:
       - ZBX_TLSCONNECT=${ZBX_TLSCONNECT:-psk}
       - ZBX_TLSACCEPT=${ZBX_TLSACCEPT:-psk}
       - ZBX_DEBUGLEVEL=${ZBX_DEBUGLEVEL:-1}
+      - ZBX_STARTAGENTS=${ZBX_STARTAGENTS:-100}
+      - ZBX_BUFFERSIZE=${ZBX_BUFFERSIZE:-1000}
     volumes:
       - ./enc:/var/lib/zabbix/enc:ro
     stop_grace_period: 1m
